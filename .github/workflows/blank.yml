@@ -21,12 +21,22 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    
+      - name: Paso de contruccion 
+        run: echo "Este es el paso de Contruccion"
 
-      # Runs a single command using the runners shell
-      - name: "Visualizar mensaje"
-        run: echo "Hello, world!"
+  test:
+    runs-on: ubuntu-latest
+    needs: build
 
-      
+    steps:
+      - name: Paso de Testeo
+        run: echo "Este es el paso de Testeo"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps: 
+      - name: Paso de deploy
+        run: echo "Este es el paso de despliegue"  
       
